@@ -1,0 +1,60 @@
+#Data Warehousing and Gathering
+
+##Where is the data from
+This data was sourced from Marvel.com
+
+##How was it collected
+The data was taken from a Kaggle dataset
+
+##How was it extracted
+Data from the Marvel website is extracted via the Marvel Web API
+
+##What program was used to clean the data?
+Jupyter Notebook was used to clean the data
+
+##How was the data cleaned/transformed?
+All column names were standardized to lowercase and remove spaces
+The published_date column was altered from a object type to a date column to facilitate future manipulation.
+The year in each row of the published_date column was seperated into a new column to better display total publications by year
+The price column was manipulated to remove books with no given price (i.e. none written), and books with a written price of "free" were changed to a monetary value of 0.00
+Dollar signs were removed from all rows in the price column in order to turn the column from an object to numeric column
+The rating system, which included many duplicate versions of the same rating (i.e. RATED T, Rated T, rated t, etc.) was standardized to replace all duplicate ratings
+
+##What are the units for the numeric data
+The main numeric column in the data set is the price column, making the units US dollars
+
+##What are the formulas used in column creation
+When creating the year column from the published_date column using the pd.to.datetime function from the pandas package. 
+Following this, the published date column was modified via the __dt.year function to seperate the year into a new column on its own
+
+##What are the definitions for the column names? Include all columns of your dataset and the type of data it is.​
+Comic name: Name of the comic series.
+Active years: The full duration of the published comic series
+Issue title: The name of the individual comic in the greater series
+Publish date: The date the comic was published on
+Issue_description: Description of the issue.
+Penciler: Penciper of the comic issue, draws the issue but may not color it.
+Writer: Original writer.
+Cover artist: Person responsible for cover art of the comic.
+Imprint: An imprint of a publisher is a trade name under which it publishes a work
+Format: Comic format, as in a regular comic, a special, a novel, etc.
+Rating: Age Rating.
+Price: Price of the comic.
+
+##If there are set variable options in your dataset, what are thier definitions? ​
+The only variable options that are of note are the rating system. It runs as follows:
+- All Ages: The book is suitable for all ages
+- A: The book is suitable for children ages 9 and up
+- T: The book is suitable for children ages 12 and up
+- T+ The book is suitable for childeren ages 13 and up
+- Parantal Supervision Required (PSR), Parental Guidance Required, Marvel PSR, & Marvel PSR+: The book is suitable for children ages 15 and up, but can be read by younger children
+-Parental Advisory SLC: No specific age requirement is given here, but SLC stands Sexually Explicit Content, meaning a book with this rating is not suitable for a younger audiance
+- Max & Mature: Specific lines of comics suitable for those ages 18 +
+- No Rating, Not in Oracle: No rating given
+
+##What are the regulations to using the data? 
+The Liscence with the data in Kaggle is public domain
+
+##If you are referencing sources, be sure to include citations/references as needed.
+https://www.kaggle.com/datasets/deepcontractor/marvel-comic-books/data
+https://www.comicbookdaily.com/columns/whosoever-holds-this-hammer-blogs-2/whosoever-holds-this-hammer-comic-books-need-a-better-rating-system/
